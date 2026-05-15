@@ -1,505 +1,195 @@
-*{
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-html,body{
-    height: 100%;
-    width: 100%;
-    background-color: black;
-}
-
-.parent{
-    height: 95%;
-    width: 95%;
+body {
+    background-color: #121316;
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 25% 28.5% 28.5% 18%;
-    gap: 20px;
+    place-items: center;
+    min-height: 100vh;
+}
+
+/* The Core Architecture:
+  Using a 4-column, 20-row grid to perfectly interlock the mismatched 
+  vertical heights while strictly adhering to grid and gap.
+*/
+.bento-grid {
+    width: 1200px;
+    height: 800px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    gap: 16px;
     padding: 20px;
-    grid-template-areas:
-    "left-top center-top1 center-top2 right-top"
-    "left-top center center right-top"
-    "left-center center center right-bottom"
-    "left-bottom left-bottom center-bottom right-bottom"
-    ;
 }
 
-.box{
-    border-radius: 15px;
-}
-
-.left-top{
-    position: relative;
-    grid-area: left-top;
-    background-color: rgb(181, 156, 160);
-    background-image: url(./assets/908960c6-0e7d-4df5-be32-8366f8528fbe-preview-1778803680482.png);
-    background-position: center;
-}
-.star{
-    position: absolute;
-    margin-top: 13px;
-    margin-left: 13px;
-    background-color: black;
-    padding: 6px;
-    border: 1px solid black;
-    border-radius: 30px;
-    height: 43px;
-
-}
-.exparent{
-    display: flex;
-    align-items: self-end;
-    justify-content: space-evenly;
-}
-.fire{
-     border-radius: 20px;
-     color: black;
-     padding: 5px;
-     background-color: rgb(252, 213, 15);
-}
-.pulse{
-    color: black;
+/* Card Globals */
+.card {
     border-radius: 20px;
-    padding: 5px;
-    background-color: rgb(252, 213, 15);
+    position: relative;
+    overflow: hidden;
 }
-.run{
-    color: black;
-    border-radius: 30px;
-    padding: 5px;
-    background-color: rgb(252, 213, 15);
+
+/* --- GRID MAPPINGS --- */
+.card-man      { grid-column: 1 / 2; grid-row: 1 / 9; }
+.card-app      { grid-column: 2 / 3; grid-row: 1 / 6; }
+.card-fonts    { grid-column: 3 / 4; grid-row: 1 / 6; }
+.card-strength { grid-column: 4 / 5; grid-row: 1 / 10; }
+.card-redefine { grid-column: 1 / 2; grid-row: 9 / 15; }
+.card-logo     { grid-column: 2 / 4; grid-row: 6 / 15; }
+.card-phone    { grid-column: 4 / 5; grid-row: 10 / 21; }
+.card-visit    { grid-column: 1 / 3; grid-row: 15 / 21; }
+.card-woman    { grid-column: 3 / 4; grid-row: 15 / 21; }
+
+
+/* --- CARD SPECIFIC STYLES (Using absolute/relative positioning ONLY) --- */
+
+/* 1. Man Card */
+.card-man {
+    background: url('./assets/908960c6-0e7d-4df5-be32-8366f8528fbe-preview-1778803680482.png') center/cover no-repeat;
 }
-#ex{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    height: 40px;
-    margin-bottom: -460px;
+.stats-grid {
+    position: absolute;
+    bottom: 12px; left: 12px; right: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+}
+.stat-pill {
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 12px;
-    background-color: rgba(0, 0, 0, 0.297);
-    padding: 5px 10px;
-    border: 1px solid rgba(20, 19, 19, 0.182);
-    font-size: 11px;
-    font-weight: 600;
+    height: 40px;
+    position: relative;
     color: white;
-    font-family: ui-sans-serif, -apple-system, "system-ui", "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
 }
-.left-center{
-    position: relative;
-    padding: 20px;
-    grid-area: left-center;
-    background-color: rgb(255, 255, 255);
+.icon { position: absolute; left: 10px; top: 10px; font-size: 14px; color: #f4ce14; }
+.stat-text { position: absolute; left: 32px; top: 8px; }
+.val { display: block; font-size: 12px; font-weight: bold; }
+.lbl { display: block; font-size: 8px; color: #ccc; }
+
+/* 2. App Card */
+.card-app { background-color: rgb(245, 204, 93); }
+.app-bars {
+    height: 20px;
+    position: absolute; top: 20px; left: 24px;
+    font-weight: 900; letter-spacing: 2px; font-size: 20px;
 }
 
-#flexlogo{
+.app-bars img{
     position: absolute;
-    left: 20px;
-    background-color: rgb(255, 220, 20);
-    border: 1px solid rgba(0, 0, 0, 0.025);
-    padding: 4px 2.5px;
-    border-radius: 50%;
-    bottom: 30px;
-    height: 60px;
+    top: -5px;
+    height: 40px;
+    width: 70px;
 }
-h6{
-    position:absolute;
-    font-family: ui-sans-serif, -apple-system, "system-ui", "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-    font-weight: bold;
-    font-size: 13.5px;
-    bottom: 40px;
-    left: 95px;
+.app-title {
+    position: absolute; top: 68px; left: 24px;
+    font-size: 13px; font-weight: 800; line-height: 1.3;
 }
-
-.left-center-p{
-    font-size: 30px;
-    font-weight: bolder;
-    font-family: ui-sans-serif, -apple-system, "system-ui", "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+.app-buttons {
+    position: absolute; bottom: 12px; left: 24px; right: 24px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+.store-btn img{
+    height: 32px; 
 }
 
-.left-bottom{
-    position: relative;
-    grid-area: left-bottom;
-    background-color: rgb(237, 178, 164);
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* 3. Fonts Card */
+.card-fonts { background-color: #ffffff; }
+.font-lbl { font-size: 9px; color: #888; font-weight: bold; letter-spacing: 0.5px; }
+.top-lbl { position: absolute; top: 24px; left: 24px; }
+.font-val { position: absolute; top: 40px; left: 24px; font-size: 20px; font-weight: 900; }
+.mid-lbl { position: absolute; top: 90px; left: 24px; }
+.font-val-sub { position: absolute; top: 105px; left: 24px; font-size: 16px; font-weight: 500; }
+.color-palette {
+    position: absolute; bottom: 24px; left: 24px; width: 150px; height: 12px;
+    border-radius: 10px;
+    background: linear-gradient(to right, #dca89f 25%, #fce300 25% 50%, #f0f0f0 50% 75%, #000 75%);
 }
 
-.lady{
-    margin-top: 6px;
-    border: 1px solid rgba(0, 0, 0, 0.172);
-    border-radius: 15%;
-    height: 140px;
-    width: 250px;
-    object-fit: cover;
+/* 4. Strength Card */
+.card-strength { background-color: #ffffff; }
+.strength-tag { position: absolute; top: 24px; left: 24px; font-size: 10px; font-weight: bold; }
+.black-sq { position: absolute; left: 0; top: 0; width: 10px; height: 10px; background: #000; }
+.strength-tag span { position: absolute; left: 16px; top: -2px; width: 200px; }
+.strength-title {
+    position: absolute; top: 65px; left: 24px;
+    font-size: 28px; font-weight: 900; line-height: 1.1;
+}
+.location-card {
+    position: absolute; bottom: 12px; left: 12px; right: 12px; height: 120px;
+    background-color: #facac6; border-radius: 16px;
+}
+.pin-icon { position: absolute; top: 20px; left: 20px; background: #000; border-radius: 50%; width: 24px; height: 24px; text-align: center; line-height: 24px; font-size: 12px;}
+.location-card p { position: absolute; top: 20px; left: 56px; font-size: 11px; font-weight: 500; line-height: 1.4; }
+.site-link { position: absolute; bottom: 20px; left: 20px; font-size: 11px; font-weight: 800; }
+
+/* 5. Logo Card */
+.card-logo { background-color: #fbf6ec; }
+.logo-center {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 48px; font-weight: 900; letter-spacing: -1px; width: max-content;
+}
+.logo-mark {
+    display: inline-block; position: relative; top: -5px; width: 50px; height: 40px;
+    background: #000; color: #fff; border-radius: 8px 0 20px 0;
+    text-align: center; line-height: 40px; font-style: italic; margin-right: 8px;
 }
 
-.train{
-    position: absolute;
-    margin-top: 18px;
-    margin-left: -240px;
-    font-size: 18px;
-    font-weight: 900;
-    font-family: ui-sans-serif, -apple-system, "system-ui", "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-}
-h1{
-    position: absolute;
-    font-family: ui-sans-serif, -apple-system, "system-ui", "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-    margin-top: 90px;
-    margin-left: -240px;
-}
-.photos{
-    position: relative;
-    height: 200px;
-    padding: 20px;
-}
-.experttrainers{
-    position: absolute;
-    font-size: 10px;
-    margin-top: 135px;
-    margin-left: -240px;
-    font-family: ui-sans-serif, -apple-system, "system-ui", "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+/* 6. Redefine Card */
+.card-redefine { background-color: #ffffff; }
+.redefine-title { position: absolute; top: 24px; left: 24px; font-size: 20px; font-weight: 900; line-height: 1.2; }
+.luxury-brand { position: absolute; bottom: 24px; left: 24px; width: 100%; }
+.small-logo { position: absolute; left: 0; top: -30px; width: 24px; height: 24px; background: #000; color: #fce300; border-radius: 50%; text-align: center; line-height: 24px; font-weight: bold; font-style: italic;}
+.luxury-brand span { position: absolute; left: 34px; top: -30px; font-size: 9px; font-weight: bold; line-height: 1.2; }
 
-}
-.photos img{
-    margin-top: 95px;
-    height: 50px;
-    width: 50px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-right: -10px;
-    border: 1px solid rgba(255, 255, 255, 0.428);
-}
-
-.center-top1{
-    position: relative;
-    padding-left: 15px;
-    padding-top: 135px;
-    grid-area: center-top1;
-    background-color: rgb(245, 204, 93);
-}
-
-.gamet{
-    margin-top: -121px;
-    margin-left: 20px;
-    position: absolute;
-    height: 50px;
-    width: 80px;
-}
-
-.playstore{
-     position: absolute;
-     margin-top: 20px;
-     height: 30px;
-     margin-left: 30px;
-}
-
-#appstore{
-     position: absolute;
-     margin-top: 20px;
-     height: 32px;
-     margin-left: 210px;
-}
-
-
-#app{
-    position: absolute;
-    margin-top: -62px;
-    font-size: 18px;
-    font-weight: 600;
-    font-family: ui-sans-serif, -apple-system, "system-ui", "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-
-}
-
-.logo{
-
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.center-top2{
-    position: relative;
-    grid-area: center-top2;
-    background-color: rgb(255, 255, 255);
-}
-
-.bar{
-    position: absolute;
-    margin-top: 180px;
-    margin-left: 30px;
-    height: 15px;
-    width: 120px;
+/* 7. Visit Site Card */
+.card-visit { background-color: rgb(237, 178, 164); }
+.visit-image {
+    position: absolute; left: 15px; top: 10px; width: 30%; height: 90%;
     border-radius: 20px;
-    background-color: rgb(237, 178, 164);
-    border: 1px solid rgba(0, 0, 0, 0.205);
+    background: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop') center/cover;
+}
+.visit-btn {
+    position: absolute; bottom: 20px; left: 20px; right: 20px; height: 45px;
+    background: rgba(0, 0, 0, 0.8); color: #fff; border-radius: 12px;
+    font-weight: 500; font-size: 15px; text-align: center; line-height: 45px;
+    backdrop-filter: blur(2px); width:150px;
 }
 
-.bar1{
-    position: absolute;
-    margin-top: 180px;
-    margin-left: 90px;
-    height: 15px;
-    width: 120px;
-    border-radius: 20px;
-    background-color: rgb(255, 217, 0);
-    border: 1px solid rgba(0, 0, 0, 0.23);
+/* 8. Trainers Card */
+.trainers-title { position: absolute; top: 15px; left: 205px; font-size: 20px; font-weight: 800; line-height: 1.2; }
+.trainers-num { position: absolute; bottom: 35px; left: 205px; font-size: 32px; font-weight: 900; }
+.trainers-sub { position: absolute; bottom: 20px; left: 205px; font-size: 8px; font-weight: 800; color: #555; }
+.avatars { position: absolute; bottom: 20px; right: 20px; width: 80px; height: 35px; }
+.av { position: absolute; width: 35px; height: 35px; border-radius: 50%; border: 2px solid #facac6; object-fit: cover; }
+.av-1 { left: 0; z-index: 3; }
+.av-2 { left: 25px; z-index: 2; }
+.av-3 { left: 50px; z-index: 1; }
+
+/* 9. Woman Card */
+.card-woman {
+    background: #fce300 url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop') center/cover no-repeat;
 }
 
-.bar2{
-    position: absolute;
-    margin-top: 180px;
-    margin-left: 160px;
-    height: 15px;
-    width: 120px;
-    border-radius: 20px;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgba(0, 0, 0, 0.214);
+/* 10. Phone Card */
+.card-phone { background-color: #facac6; }
+.phone-header { position: absolute; top: 20px; left: 20px; font-size: 11px; font-weight: bold; width: calc(100% - 40px); }
+.p-logo { display: inline-block; width: 16px; height: 16px; background: #000; color: #fce300; border-radius: 50%; text-align: center; line-height: 16px; font-style: italic; margin-right: 4px;}
+.p-time { position: absolute; right: 0; color: #555; font-weight: normal; }
+.phone-mockup {
+    position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
+    width: 85%; height: 82%; border-radius: 35px 35px 0 0;
+    border: 6px solid #111;
+    background: url('./assets/2a4a69a2-5549-4d58-9903-d6f440a9cccb.png') center/cover;
+    overflow: hidden;
 }
-
-.bar3{
-    position: absolute;
-    margin-top: 180px;
-    margin-left: 240px;
-    height: 15px;
-    width: 120px;
-    border-radius: 20px;
-    background-color: rgb(0, 0, 0);
-    border: 1px solid rgba(13, 1, 1, 0.187);
+.phone-title { position: absolute; bottom: 79px; left: 16px; color: white; font-size: 14px; font-weight: 800; line-height: 1.1; }
+.phone-btn {
+    position: absolute; bottom: 35px; left: 16px;
+    background: #fce300; color: #000; font-size: 10px; font-weight: 800;
+    padding: 8px 16px; border-radius: 15px;
 }
-span{
-    position: absolute;
-    margin-top: 20px;
-    margin-left: 30px;
-    font-weight: 600;
-    font-size: 10px;
-   font-family: ui-sans-serif, -apple-system, "system-ui", "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-}
-
-h2{
-    position: absolute;
-    font-size: 30px;
-    margin-top: 40px;
-    margin-left: 30px;
- font-family: ui-sans-serif, -apple-system, "system-ui", "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-}
-
-.body{
-    position: absolute;
-    margin-top: 110px;
-    margin-left: 30px;
-    font-size: 9px;
-   font-family: ui-sans-serif, -apple-system, "system-ui", "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-}
-
-h3{
-    position: absolute;
-    margin-top: 130px;
-    font-size: 25px;
-    margin-left: 30px;
-    font-weight: normal;
-    font-family: ui-sans-serif, -apple-system, "system-ui", "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-}
-
-
-.center{
-    position: relative;
-    grid-area: center;
-    background-color:rgb(253, 243, 216);
-}
-.flexfitlogo{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-125%, -50%);
-    height: 200px;
-
-}
-.flexfit{
-    position: absolute;
-    margin-top: 190px;
-    margin-left: 310px;
-    font-size: 110px;
-    font-weight: 900;
-    font-family: ui-sans-serif, -apple-system, "system-ui", "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-}
-.center-bottom{
-    position: relative;
-    grid-area: center-bottom;
-    background-color: rgb(201, 184, 181);
-    background-image: url(./assets/--preview-1778754841364.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-#girl{
-    position: absolute;
-    margin-top: -45.3px;
-    margin-left: 130px;
-    height: 200px;
-}
-.right-top{
-    position: relative;
-    grid-area: right-top;
-    background-color: rgb(255, 255, 255);
-}
-.square{
-    position: absolute;
-    background-color: black;
-    margin-top: 25px;
-    margin-left: 30px;
-    height: 18px;
-    width: 10px;
-}
-.square1{
-    margin-top: 25px;
-    margin-left: 42.5px;
-    position: absolute;
-    height: 18px;
-    width: 10px;
-    background-color: rgb(252, 212, 10); 
-}
-.time{
-    position: absolute;
-    margin-top: 28px;
-    margin-left: 65px;
-    font-size: 12px;
-}
-
-.own{
-    position: absolute;
-    font-size: 60px;
-    margin-top: 80px;
-    margin-left: 30px;
-}
-
-#square{
-    position: relative;
-    border-radius: 20px;
-    margin-top: 310px;
-    margin-left: 25px;
-    background-color: rgb(245, 191, 179);
-    border: 1px solid rgba(97, 95, 95, 0.198);
-    height: 150px;
-    width: 330px;
-}
-.pin{
-    position: absolute;
-    margin-top: 20px;
-    margin-left: 20px;
-    font-size: 20px;
-    padding: 15px;
-    border-radius: 50%;
-    color: rgb(237, 213, 33);
-    background-color: black;
-    border: 1px solid black;
-}
-#address{
-    margin-left: 82px;
-    margin-top: 25px;
-    font-size: 18px;
-    font-family: ui-sans-serif, -apple-system, "system-ui", "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-}
-#span{
-    margin-left: 25px;
-    margin-top: 45px;
-    font-size: 14px;
-    font-family: ui-sans-serif, -apple-system, "system-ui", "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-}
-.right-bottom{
-    grid-area: right-bottom;
-    background-color: rgb(242, 184, 172);
-    padding: 20px;
-}
-
-
-.card-header img{
-    margin-top: 8px;
-    height: 30px;
-    border: 1px solid rgba(74, 72, 72, 0.215);
-    border-radius: 30px;
-    padding: 5px;
-    background-color: rgb(242, 209, 19);
-}
-
-.f{
-    margin-top: 12px;
-    font-size: 18px;
-    margin-left: 9px;
-    font-weight: normal;
-}
-
-.time1{
-    margin-top: 12px;
-    font-size: 15px;
-    margin-left: 290px;
-    font-weight: normal;
-    color: rgba(0, 0, 0, 0.704);
-    font-family: ui-sans-serif, -apple-system, "system-ui", "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-}
-
-.phone-container {
-  position: relative; 
-  height: 356.5px;
-  width: 100%;
-  padding: 20px;
-  aspect-ratio: 3.5/ 4; 
-  border-top-right-radius: 30px; 
-  border-top-left-radius: 30px; 
-  overflow: hidden;  
-}
-
-.background-photo {
-    width: 310px;
-    height: 340px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    object-fit: cover;
-}
-
-.phone-template {
-  position: absolute;
-  top: -16.5%;
-  left: 55.5%;
-  transform: translate(-50% );
-  height: 780px;
-  object-fit: cover; 
-}
-
-.overlay-content {
-  position: absolute;
-  bottom: 20px;
-  left: 50px;
-  right: 20px;
-  z-index: 3;
-  color: white;
-}
-
-.overlay-content h2 {
-  margin: 0 0 15px 0;
-  font-size: 25px;
-  bottom: 40px;
-  line-height: 1.2;
-}
-
-.sign-up-btn {
-  position:absolute;
-  background-color: #ffe600; /* The yellow button */
-  color: black;
-  bottom: 5px;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
-}
-.lens{
-    position: absolute;
-    bottom: 15px;
-    left: 190px;
-    font-size: 80px;
-
-}
+.refresh-icon { position: absolute; bottom: 55px; right: 16px; color: white; font-size: 54px; font-weight: bold; }
