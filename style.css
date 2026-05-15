@@ -51,6 +51,17 @@ body {
 .card-man {
     background: url('./assets/908960c6-0e7d-4df5-be32-8366f8528fbe-preview-1778803680482.png') center/cover no-repeat;
 }
+.star{
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 13px;
+    background-color: black;
+    padding: 6px;
+    border: 1px solid black;
+    border-radius: 30px;
+    height: 43px;
+
+}
 .stats-grid {
     position: absolute;
     bottom: 12px; left: 12px; right: 12px;
