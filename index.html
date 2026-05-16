@@ -3,103 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlexFit Bento UI</title>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
-  rel="stylesheet"/>
+    <title>FlexFit UI</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="bento-grid">
+    <div class="parent">
         
-        <div class="card card-man">
-            <img src="./assets/300x300.png" class="star">
-            <div class="stats-grid">
-                <div class="stat-pill">
-                    <span class="icon">🔥</span>
-                    <div class="stat-text"><span class="val">35</span><span class="lbl">MIN</span></div>
-                </div>
-                <div class="stat-pill">
-                    <span class="icon">⚡</span>
-                    <div class="stat-text"><span class="val">NO</span><span class="lbl">EXCUSES</span></div>
-                </div>
-                <div class="stat-pill">
-                    <span class="icon">🏃</span>
-                    <div class="stat-text"><span class="val">7</span><span class="lbl">DAYS</span></div>
+        <div class="box left-top">
+            <img src="./assets/300x300.png" class="star" alt="star">
+            <div class="stats-container">
+                <div class="stat-box"><i class="ri-fire-fill fire"></i><span class="stat-text">35<br>MIN</span></div>
+                <div class="stat-box"><i class="ri-pulse-line pulse"></i><span class="stat-text">NO<br>EXCUSES</span></div>
+                <div class="stat-box"><i class="ri-run-fill run"></i><span class="stat-text">7<br>DAYS</span></div>
+            </div>
+        </div>
+
+        <div class="box left-center">
+            <p class="left-center-p">REDEFINE YOUR<br>LIMITS, ACHIEVE YOUR<br>FITNESS GOALS</p>
+            <div class="luxury-brand">
+                <img src="./assets/--preview-1778754841364.png" class="flexlogo" alt="logo">
+                <h6 class="luxury-text">LUXURY FITNESS<br>EXPERIENCE</h6>
+            </div>
+        </div>
+
+        <div class="box left-bottom">
+            <img src="https://promowest.imgix.net/events/SqX0JuvaBt3TjmJ9vRV96I5tBlnQI2cDihWhfIP9.jpeg?auto=compress%2Cformat&crop=faces%2Ctop&fit=crop&h=750&w=1500&s=1c6ab928e04edf7f8eaef75108d6d1b5" class="lady" alt="model">
+            <div class="train-info">
+                <p class="train">TRAIN WITH THE<br>BEST PERSONAL<br>TRAINERS</p>
+                <h1 class="train-num">48<sup>+</sup></h1>
+                <p class="experttrainers">EXPERT TRAINERS</p>
+                <div class="avatar-group">
+                    <img src="./assets/uifaces-popular-avatar (1).jpg" class="av av1" alt="av">
+                    <img src="./assets/uifaces-popular-avatar (2).jpg" class="av av2" alt="av">
+                    <img src="./assets/uifaces-popular-avatar.jpg" class="av av3" alt="av">
                 </div>
             </div>
         </div>
 
-        <div class="card card-app">
-            <div class="app-bars"><img src="https://play-lh.googleusercontent.com/Pfx5QNXxcsUZ-Xexnd_mpgHADHPJsHYGGXVlvxmU2gUsuLuHXMrA30gyBf8TY5C6IU3v=w240-h480-rw"></div>
+        <div class="box center-top1">
+            <img src="https://play-lh.googleusercontent.com/Pfx5QNXxcsUZ-Xexnd_mpgHADHPJsHYGGXVlvxmU2gUsuLuHXMrA30gyBf8TY5C6IU3v=w240-h480-rw" class="gamet" alt="bars">
             <h2 class="app-title">USE OUR APP FOR<br>COMPILING A QUALITY<br>WORKOUT!</h2>
-            <div class="app-buttons">
-                <div class="store-btn"><img src="./assets/GetItOnGooglePlay_Badge_Web_color_English.png"></div>
-                <div class="store-btn"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"></div>
+            <div class="store-links">
+                <img src="./assets/GetItOnGooglePlay_Badge_Web_color_English.png" alt="Google Play" class="playstore">
+                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="appstore">
             </div>
-        </div>
+       </div>
 
-        <div class="card card-fonts">
-            <p class="font-lbl top-lbl">HEADINGS FONT</p>
+        <div class="box center-top2">
+            <span class="font-lbl top-lbl">HEADINGS FONT</span>
             <h2 class="font-val">SUISSE BP INT'L</h2>
             <p class="font-lbl mid-lbl">BODY</p>
             <h3 class="font-val-sub">SUISSE INT'L</h3>
-            <div class="color-palette"></div>
+            <div class="color-palette">
+                <div class="bar-color c1"></div>
+                <div class="bar-color c2"></div>
+                <div class="bar-color c3"></div>
+                <div class="bar-color c4"></div>
+            </div>
         </div>
 
-        <div class="card card-strength">
+        <div class="box center">
+            <div class="logo-wrapper">
+                <img src="./assets/--preview-1778754841364.png" class="flexfitlogo" alt="logo">
+                <h1 class="flexfit">FlexFit</h1>
+            </div>
+        </div>
+
+        <div class="box center-bottom">
+             <img src="./assets/screenshot-2026-05-15-at-4-preview-1778800509346.png" class="girl" alt="girl">
+        </div>
+
+        <div class="box right-top">
             <div class="strength-tag">
-                <div class="black-sq"></div>
-                <span>TIME FOR FITNESS — 23</span>
+                <div class="square"></div>
+                <div class="square1"></div>
+                <span class="time">TIME FOR FITNESS -- 23</span>
             </div>
-            <h1 class="strength-title">OWN YOUR<br>STRENGTH,<br>OWN YOU</h1>
+            <h1 class="own">OWN YOUR<br>STRENGTH,<br>OWN YOU</h1>
             <div class="location-card">
-                <div class="pin-icon">📍</div>
-                <p>12834 FITNESS LN<br>BROOKLYN, NY</p>
-                <span class="site-link">FLEXFIT.COM</span>
+                <i class="ri-map-pin-line pin"></i>
+                <p class="address">12834 FITNESS LN<br>BROOKLYN, NY</p>
+                <span class="website">FLEXFIT.COM</span>
             </div>
         </div>
 
-        <div class="card card-logo">
-            <div class="logo-center">
-                <span class="logo-mark">F</span> FlexFit
+        <div class="box right-bottom">
+            <div class="card-header">
+                <img src="./assets/--preview-1778754841364.png" class="small-icon" alt="icon">
+                <span class="f">FlexFit</span>
+                <span class="time1">2h</span>
             </div>
-        </div>
-
-        <div class="card card-redefine">
-            <h2 class="redefine-title">REDEFINE YOUR<br>LIMITS, ACHIEVE YOUR<br>FITNESS GOALS</h2>
-            <div class="luxury-brand">
-                <div class="small-logo">F</div>
-                <span>LUXURY FITNESS<br>EXPERIENCE</span>
-            </div>
-        </div>
-
-        <div class="card card-visit">
-            <div class="visit-image"></div>
-            <div class="visit-btn">↗ Visit site</div>
-            <h3 class="trainers-title">TRAIN WITH THE<br>BEST PERSONAL<br>TRAINERS</h3>
-            <h1 class="trainers-num">48+</h1>
-            <p class="trainers-sub">EXPERT TRAINERS</p>
-            <div class="avatars">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&auto=format&fit=crop" class="av av-1">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" class="av av-2">
-                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&auto=format&fit=crop" class="av av-3">
-            </div>
-        </div>
-        <div class="card card-woman"></div>
-
-        <div class="card card-phone">
-            <div class="phone-header">
-                <span class="p-logo">F</span> FlexFit <span class="p-time">2h</span>
-            </div>
-            <div class="phone-mockup">
-                <h3 class="phone-title">UNLOCK YOUR<br>POTENTIAL</h3>
-                <div class="phone-btn">SIGN UP</div>
-                <i class="ri-search-ai-line lens refresh-icon"></i>
+            <div class="phone-container">
+                <img src="./assets/2a4a69a2-5549-4d58-9903-d6f440a9cccb.png" alt="fitness-model" class="background-photo">
+                <div class="overlay-content">
+                    <h2 class="unlock-title">UNLOCK YOUR<br>POTENTIAL</h2>
+                    <button class="sign-up-btn">SIGN UP</button> 
+                    <i class="ri-search-ai-line lens"></i>
+                </div>
             </div>
         </div>
 
     </div>
-
 </body>
 </html>

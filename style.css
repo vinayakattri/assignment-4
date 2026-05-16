@@ -1,206 +1,494 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+    font-family: ui-sans-serif, -apple-system, "system-ui", "Segoe UI Variable Display", "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
-body {
-    background-color: #121316;
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: black;
     display: grid;
-    place-items: center;
-    min-height: 100vh;
+    place-items: center; 
 }
 
-/* The Core Architecture:
-  Using a 4-column, 20-row grid to perfectly interlock the mismatched 
-  vertical heights while strictly adhering to grid and gap.
-*/
-.bento-grid {
+
+.parent {
     width: 1200px;
-    height: 800px;
+    height: 850px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(20, 1fr);
-    gap: 16px;
+    gap: 20px;
     padding: 20px;
 }
 
-/* Card Globals */
-.card {
-    border-radius: 20px;
-    position: relative;
+.box {
+    border-radius: 15px;
+    position: relative; 
     overflow: hidden;
 }
 
-/* --- GRID MAPPINGS --- */
-.card-man      { grid-column: 1 / 2; grid-row: 1 / 9; }
-.card-app      { grid-column: 2 / 3; grid-row: 1 / 6; }
-.card-fonts    { grid-column: 3 / 4; grid-row: 1 / 6; }
-.card-strength { grid-column: 4 / 5; grid-row: 1 / 10; }
-.card-redefine { grid-column: 1 / 2; grid-row: 9 / 15; }
-.card-logo     { grid-column: 2 / 4; grid-row: 6 / 15; }
-.card-phone    { grid-column: 4 / 5; grid-row: 10 / 21; }
-.card-visit    { grid-column: 1 / 3; grid-row: 15 / 21; }
-.card-woman    { grid-column: 3 / 4; grid-row: 15 / 21; }
+
+.left-top      { grid-column: 1 / 2; grid-row: 1 / 9; background-color: rgb(181, 156, 160); background-image: url(./assets/908960c6-0e7d-4df5-be32-8366f8528fbe-preview-1778803680482.png); background-size: cover; background-position: center; }
+.center-top1   { grid-column: 2 / 3; grid-row: 1 / 6; background-color: rgb(245, 204, 93); }
+.center-top2   { grid-column: 3 / 4; grid-row: 1 / 6; background-color: rgb(255, 255, 255); }
+.right-top     { grid-column: 4 / 5; grid-row: 1 / 11; background-color: rgb(255, 255, 255); }
+.left-center   { grid-column: 1 / 2; grid-row: 9 / 14; background-color: rgb(255, 255, 255); }
+.center        { grid-column: 2 / 4; grid-row: 6 / 14; background-color: rgb(253, 243, 216); }
+.left-bottom   { grid-column: 1 / 3; grid-row: 14 / 21; background-color: rgb(237, 178, 164); }
+.center-bottom { grid-column: 3 / 4; grid-row: 14 / 21; background-color: rgb(201, 184, 181); }
+.right-bottom  { grid-column: 4 / 5; grid-row: 11 / 21; background-color: rgb(242, 184, 172); }
 
 
-/* --- CARD SPECIFIC STYLES (Using absolute/relative positioning ONLY) --- */
-
-/* 1. Man Card */
-.card-man {
-    background: url('./assets/908960c6-0e7d-4df5-be32-8366f8528fbe-preview-1778803680482.png') center/cover no-repeat;
+/* 1. Left Top */
+.star { 
+    position: absolute; 
+    top: 15px; 
+    left: 15px; 
+    background: black; 
+    padding: 6px; 
+    border-radius: 50%; 
+    height: 43px; 
 }
-.star{
-    position: absolute;
-    margin-top: 5px;
-    margin-left: 13px;
-    background-color: black;
-    padding: 6px;
-    border: 1px solid black;
-    border-radius: 30px;
-    height: 43px;
 
+.stats-container {
+    position: absolute; 
+    bottom: 15px; 
+    left: 15px; 
+    right: 15px;
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px;
 }
-.stats-grid {
-    position: absolute;
-    bottom: 12px; left: 12px; right: 12px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 8px;
+
+.stat-box { 
+    position: relative; 
+    background: rgba(0, 0, 0, 0.4); 
+    border-radius: 12px; 
+    height: 45px; 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
 }
-.stat-pill {
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 12px;
+
+.stat-box i { 
+    position: absolute; 
+    left: 8px; 
+    top: 8px; 
+    color: black; 
+    background: rgb(252, 213, 15); 
+    padding: 5px; 
+    border-radius: 50%; 
+    font-size: 14px; 
+}
+
+.stat-text { 
+    position: absolute; 
+    left: 38px; 
+    top: 8px; 
+    color: white; 
+    font-size: 10px; 
+    font-weight: bold; 
+    line-height: 1.2; 
+}
+
+/* 2. Left Center */
+.left-center-p { 
+    position: absolute; 
+    top: 20px; 
+    left: 20px; 
+    font-size: 20px; 
+    font-weight: 900; 
+    line-height: 1.2; 
+}
+
+.luxury-brand { 
+    position: absolute; 
+    bottom: 20px; 
+    left: 20px; 
+    width: 100%; 
+    height: 50px; 
+}
+
+.flexlogo { 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    background: rgb(255, 220, 20); 
+    padding: 5px; 
+    border-radius: 50%; 
+    height: 40px; 
+}
+
+.luxury-text { 
+    position: absolute; 
+    left: 50px; 
+    top: 8px; 
+    font-size: 12px; 
+    font-weight: bold; 
+}
+
+/* 3. Left Bottom (Spans 2 columns) */
+.lady { 
+    position: absolute; 
+    left: 20px; 
+    top: 20px; 
+    height: calc(100% - 40px); 
+    width: 45%; 
+    border-radius: 15%; 
+    object-fit: cover; 
+}
+
+.train-info { 
+    position: absolute; 
+    left: 52%; 
+    top: 20px; 
+    right: 20px; 
+    bottom: 20px; 
+}
+
+.train { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    font-size: 18px; 
+    font-weight: 900; 
+}
+
+.train-num { 
+    position: absolute; 
+    bottom: 30px; 
+    left: 0; 
+    font-size: 40px; 
+}
+
+.experttrainers { 
+    position: absolute; 
+    bottom: 15px; 
+    left: 0; 
+    font-size: 10px; 
+    font-weight: bold; 
+}
+
+.avatar-group { 
+    position: absolute; 
+    bottom: 20px; 
+    right: 0; 
+    width: 80px; 
     height: 40px;
-    position: relative;
-    color: white;
-}
-.icon { position: absolute; left: 10px; top: 10px; font-size: 14px; color: #f4ce14; }
-.stat-text { position: absolute; left: 32px; top: 8px; }
-.val { display: block; font-size: 12px; font-weight: bold; }
-.lbl { display: block; font-size: 8px; color: #ccc; }
-
-/* 2. App Card */
-.card-app { background-color: rgb(245, 204, 93); }
-.app-bars {
-    height: 20px;
-    position: absolute; top: 20px; left: 24px;
-    font-weight: 900; letter-spacing: 2px; font-size: 20px;
 }
 
-.app-bars img{
+.av { 
+    position: absolute; 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 2px solid rgba(237, 179, 164, 0.275); 
+}
+
+.av1 { 
+    left: -15px;
+     z-index: 3; 
+}
+
+.av2 { 
+    left: 14px; 
+    z-index: 2; 
+}
+
+.av3 { 
+    left: 42px; 
+    z-index: 1; 
+}
+
+/* 4. Center Top 1 */
+.gamet { 
+    position: absolute; 
+    top: 15px; 
+    left: 15px; 
+    height: 40px; 
+}
+
+.app-title { 
+    position: absolute; 
+    top: 65px; 
+    left: 20px; 
+    font-size: 14px; 
+    font-weight: 800; 
+}
+
+.store-links { 
+    position: absolute; 
+    bottom: 20px; 
+    left: 20px; 
+    right: 20px; 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px; 
+}
+
+.playstore, .appstore { 
+    width: 100%; 
+    height: auto; 
+}
+
+
+/* 5. Center Top 2 */
+.font-lbl { 
+    position: absolute; 
+    left: 20px; 
+    font-size: 10px; 
+    font-weight: bold; 
+    color: #555; 
+}
+
+.top-lbl { 
+    top: 20px; 
+}
+
+.font-val { 
+    position: absolute; 
+    top: 40px; 
+    left: 20px; 
+    font-size: 24px; 
+    font-weight: 900; 
+}
+
+.mid-lbl { 
+    top: 90px; 
+}
+
+.font-val-sub { 
+    position: absolute; 
+    top: 110px; 
+    left: 20px; 
+    font-size: 18px; 
+}
+
+.color-palette { 
+    position: absolute; 
+    bottom: 20px; 
+    left: 20px; 
+    right: 20px; 
+    height: 15px; 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    border-radius: 10px; 
+    overflow: hidden; 
+}
+
+.bar-color.c1 { 
+    background-color: rgb(237, 178, 164); 
+}
+
+.bar-color.c2 { 
+    background-color: rgb(255, 217, 0);
+}
+
+.bar-color.c3 { 
+    background-color: rgb(200, 200, 200); 
+}
+
+.bar-color.c4 { 
+    background-color: rgb(0, 0, 0); 
+}
+
+
+/* 6. Center Logo */
+.logo-wrapper { 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    display: grid; 
+    grid-template-columns: auto auto; 
+    align-items: center; 
+    gap: 10px; 
+}
+
+.flexfitlogo { 
+    height: 60px; 
+}
+
+.flexfit { 
+    font-size: 60px; 
+    font-weight: 900; 
+}
+
+/* 7. Center Bottom */
+.girl { 
+    position: absolute; 
+    top: 0; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+/* 8. Right Top */
+.strength-tag { 
+    position: absolute; 
+    top: 25px; 
+    left: 25px; 
+    width: 100%; 
+    height: 20px; 
+}
+
+.square { 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    width: 12px; 
+    height: 12px; 
+    background: black; 
+}
+
+.square1 { 
+    position: absolute; 
+    left: 12px; 
+    top: 0; 
+    width: 12px; 
+    height: 12px; 
+    background: rgb(252, 212, 10); 
+}
+
+.time { 
+    position: absolute; 
+    left: 35px; 
+    top: -2px; 
+    font-size: 12px; 
+    font-weight: bold; 
+}
+
+.own { position: absolute;
+    top: 70px; 
+    left: 25px; 
+    font-size: 40px; 
+    line-height: 1.1; 
+}
+
+.location-card { 
+    position: absolute; 
+    bottom: 20px; 
+    left: 20px; 
+    right: 20px; 
+    height: 120px; 
+    background-color: rgb(245, 191, 179); 
+    border-radius: 20px; 
+}
+
+.pin { 
+    position: absolute; 
+    top: 20px; 
+    left: 20px; 
+    font-size: 20px; 
+    padding: 10px; 
+    border-radius: 50%; 
+    color: rgb(237, 213, 33); 
+    background-color: black; 
+}
+
+.address { 
+    position: absolute; 
+    top: 20px; 
+    left: 75px; 
+    font-size: 14px; 
+    font-weight: bold; 
+}
+
+.website { 
+    position: absolute; 
+    bottom: 20px; 
+    left: 20px; 
+    font-size: 12px; 
+    font-weight: bold; 
+}
+
+/* 9. Right Bottom */
+.card-header { 
+    position: absolute; 
+    top: 20px; 
+    left: 20px; 
+    right: 20px; 
+    height: 30px; 
+}
+
+.small-icon { 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    height: 25px; 
+    background: rgb(242, 209, 19); 
+    border-radius: 50%; 
+    padding: 3px; 
+}
+
+.f { 
+    position: absolute; 
+    left: 35px; 
+    top: 5px; 
+    font-size: 14px; 
+    font-weight: bold; 
+}
+
+.time1 { 
+    position: absolute; 
+    right: 0; 
+    top: 5px; 
+    font-size: 14px; 
+    color: #555; 
+}
+
+.phone-container { 
     position: absolute;
-    top: -5px;
-    height: 40px;
-    width: 70px;
-}
-.app-title {
-    position: absolute; top: 68px; left: 24px;
-    font-size: 13px; font-weight: 800; line-height: 1.3;
-}
-.app-buttons {
-    position: absolute; bottom: 12px; left: 24px; right: 24px;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-}
-.store-btn img{
-    height: 32px; 
+    bottom: 0; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 85%; 
+    height: 85%; 
+    border-radius: 30px 30px 0 0; 
+    overflow: hidden; 
 }
 
-/* 3. Fonts Card */
-.card-fonts { background-color: #ffffff; }
-.font-lbl { font-size: 9px; color: #888; font-weight: bold; letter-spacing: 0.5px; }
-.top-lbl { position: absolute; top: 24px; left: 24px; }
-.font-val { position: absolute; top: 40px; left: 24px; font-size: 20px; font-weight: 900; }
-.mid-lbl { position: absolute; top: 90px; left: 24px; }
-.font-val-sub { position: absolute; top: 105px; left: 24px; font-size: 16px; font-weight: 500; }
-.color-palette {
-    position: absolute; bottom: 24px; left: 24px; width: 150px; height: 12px;
-    border-radius: 10px;
-    background: linear-gradient(to right, #dca89f 25%, #fce300 25% 50%, #f0f0f0 50% 75%, #000 75%);
+.background-photo { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
 }
 
-/* 4. Strength Card */
-.card-strength { background-color: #ffffff; }
-.strength-tag { position: absolute; top: 24px; left: 24px; font-size: 10px; font-weight: bold; }
-.black-sq { position: absolute; left: 0; top: 0; width: 10px; height: 10px; background: #000; }
-.strength-tag span { position: absolute; left: 16px; top: -2px; width: 200px; }
-.strength-title {
-    position: absolute; top: 65px; left: 24px;
-    font-size: 28px; font-weight: 900; line-height: 1.1;
-}
-.location-card {
-    position: absolute; bottom: 12px; left: 12px; right: 12px; height: 120px;
-    background-color: #facac6; border-radius: 16px;
-}
-.pin-icon { position: absolute; top: 20px; left: 20px; background: #000; border-radius: 50%; width: 24px; height: 24px; text-align: center; line-height: 24px; font-size: 12px;}
-.location-card p { position: absolute; top: 20px; left: 56px; font-size: 11px; font-weight: 500; line-height: 1.4; }
-.site-link { position: absolute; bottom: 20px; left: 20px; font-size: 11px; font-weight: 800; }
-
-/* 5. Logo Card */
-.card-logo { background-color: #fbf6ec; }
-.logo-center {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    font-size: 48px; font-weight: 900; letter-spacing: -1px; width: max-content;
-}
-.logo-mark {
-    display: inline-block; position: relative; top: -5px; width: 50px; height: 40px;
-    background: #000; color: #fff; border-radius: 8px 0 20px 0;
-    text-align: center; line-height: 40px; font-style: italic; margin-right: 8px;
+.overlay-content { 
+    position: absolute; 
+    bottom: 20px; 
+    left: 20px; 
+    right: 20px; 
+    z-index: 3; 
 }
 
-/* 6. Redefine Card */
-.card-redefine { background-color: #ffffff; }
-.redefine-title { position: absolute; top: 24px; left: 24px; font-size: 20px; font-weight: 900; line-height: 1.2; }
-.luxury-brand { position: absolute; bottom: 24px; left: 24px; width: 100%; }
-.small-logo { position: absolute; left: 0; top: -30px; width: 24px; height: 24px; background: #000; color: #fce300; border-radius: 50%; text-align: center; line-height: 24px; font-weight: bold; font-style: italic;}
-.luxury-brand span { position: absolute; left: 34px; top: -30px; font-size: 9px; font-weight: bold; line-height: 1.2; }
-
-/* 7. Visit Site Card */
-.card-visit { background-color: rgb(237, 178, 164); }
-.visit-image {
-    position: absolute; left: 15px; top: 10px; width: 30%; height: 90%;
-    border-radius: 20px;
-    background: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop') center/cover;
-}
-.visit-btn {
-    position: absolute; bottom: 20px; left: 20px; right: 20px; height: 45px;
-    background: rgba(0, 0, 0, 0.8); color: #fff; border-radius: 12px;
-    font-weight: 500; font-size: 15px; text-align: center; line-height: 45px;
-    backdrop-filter: blur(2px); width:150px;
+.unlock-title { 
+    font-size: 18px; 
+    color: white; 
+    line-height: 1.1; 
+    margin-bottom: 10px; 
 }
 
-/* 8. Trainers Card */
-.trainers-title { position: absolute; top: 15px; left: 205px; font-size: 20px; font-weight: 800; line-height: 1.2; }
-.trainers-num { position: absolute; bottom: 35px; left: 205px; font-size: 32px; font-weight: 900; }
-.trainers-sub { position: absolute; bottom: 20px; left: 205px; font-size: 8px; font-weight: 800; color: #555; }
-.avatars { position: absolute; bottom: 20px; right: 20px; width: 80px; height: 35px; }
-.av { position: absolute; width: 35px; height: 35px; border-radius: 50%; border: 2px solid #facac6; object-fit: cover; }
-.av-1 { left: 0; z-index: 3; }
-.av-2 { left: 25px; z-index: 2; }
-.av-3 { left: 50px; z-index: 1; }
-
-/* 9. Woman Card */
-.card-woman {
-    background: #fce300 url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop') center/cover no-repeat;
+.sign-up-btn { 
+    background-color: #ffe600; 
+    color: black; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 20px; 
+    font-weight: bold; 
+    cursor: pointer; 
 }
 
-/* 10. Phone Card */
-.card-phone { background-color: #facac6; }
-.phone-header { position: absolute; top: 20px; left: 20px; font-size: 11px; font-weight: bold; width: calc(100% - 40px); }
-.p-logo { display: inline-block; width: 16px; height: 16px; background: #000; color: #fce300; border-radius: 50%; text-align: center; line-height: 16px; font-style: italic; margin-right: 4px;}
-.p-time { position: absolute; right: 0; color: #555; font-weight: normal; }
-.phone-mockup {
-    position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
-    width: 85%; height: 82%; border-radius: 35px 35px 0 0;
-    border: 6px solid #111;
-    background: url('./assets/2a4a69a2-5549-4d58-9903-d6f440a9cccb.png') center/cover;
-    overflow: hidden;
+.lens { 
+    position: absolute; 
+    right: 0; 
+    bottom: 20px; 
+    font-size: 50px; 
+    color: white; 
 }
-.phone-title { position: absolute; bottom: 79px; left: 16px; color: white; font-size: 14px; font-weight: 800; line-height: 1.1; }
-.phone-btn {
-    position: absolute; bottom: 35px; left: 16px;
-    background: #fce300; color: #000; font-size: 10px; font-weight: 800;
-    padding: 8px 16px; border-radius: 15px;
-}
-.refresh-icon { position: absolute; bottom: 55px; right: 16px; color: white; font-size: 54px; font-weight: bold; }
